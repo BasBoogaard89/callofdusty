@@ -1,0 +1,23 @@
+<mat-nav-list>
+    @for (item of nav; track item) {
+    <mat-expansion-panel class="nav-panel" [hideToggle]="!item.children?.length" [class.no-children]="!item.children?.length"
+        (click)="!item.children?.length && go($event, item.link)">
+        
+        <mat-expansion-panel-header class="nav-header">
+            <mat-icon class="mr">{{ item.icon }}</mat-icon>
+            <span class="label">{{ item.label }}</span>
+            <span class="spacer"></span>
+        </mat-expansion-panel-header>
+        
+        @if (item.children?.length) {
+        <div class="group-items">
+            @for (c of item.children; track c) {
+            <a mat-list-item [routerLink]="c.link" routerLinkActive="active">
+                <span class="sub-label">{{ c.label }}</span>
+            </a>
+            }
+        </div>
+        }
+    </mat-expansion-panel>
+    }
+</mat-nav-list>

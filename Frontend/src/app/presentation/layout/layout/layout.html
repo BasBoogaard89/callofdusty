@@ -1,0 +1,12 @@
+<app-header />
+
+<mat-drawer-container class="layout">
+    <mat-drawer mode="side" opened class="sidenav">
+        <app-menu />
+    </mat-drawer>
+    <mat-drawer-content class="content">
+        
+        <h1>{{titleService.title()}}</h1>
+        <router-outlet />
+    </mat-drawer-content>
+</mat-drawer-container>

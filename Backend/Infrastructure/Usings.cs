@@ -1,0 +1,16 @@
+﻿global using Application.Dtos;
+global using Application.Dtos.Filters;
+global using Application.Interfaces;
+global using Application.Interfaces.Repositories;
+global using Application.Interfaces.Services;
+global using AutoMapper;
+global using Domain.Entities;
+global using Domain.Enums;
+global using Infrastructure.Context;
+global using Infrastructure.Extensions;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.ChangeTracking;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using System.Linq.Expressions;
+global using System.Reflection;

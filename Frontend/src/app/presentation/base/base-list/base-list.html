@@ -1,0 +1,33 @@
+@if (!config().disableAdd) {
+    <button matButton (click)="config().onAdd()"><mat-icon>add</mat-icon> Add</button>
+}
+
+<table mat-table [dataSource]="dataSource" matSort>
+    
+    @for (col of config().columns; track col) {
+    <ng-container [matColumnDef]="col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            {{ col | humanizeColumn }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element | valueByPath: col }} </td>
+    </ng-container>
+    }
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+            Actions
+        </th>
+        <td mat-cell *matCellDef="let element">
+            @if (!config().disableEdit) {
+                <button matButton (click)="config().onEdit(element)"><mat-icon>edit</mat-icon> Edit</button>
+            }
+
+            @if (!config().disableDelete) {
+                <button matButton (click)="config().onDelete(element.id)"><mat-icon>delete</mat-icon> Delete</button>
+            }
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns();"></tr>
+</table>

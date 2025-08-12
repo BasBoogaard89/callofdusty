@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <button matIconButton><mat-icon>broadcast_on_personal</mat-icon></button>
+
+    <span>Call of Dusty</span>
+
+    <span class="spacer"></span>
+
+    <div class="flex align-items-center">
+        <p>Theme: </p>
+        <mat-form-field appearance="outline" class="header-select">
+            <mat-select [value]="selected()" (selectionChange)="onThemeChange($event.value)">
+                @for (t of themes(); track t.id) {
+                <mat-option [value]="t">
+                    {{ t.description }}
+                </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+    
+</mat-toolbar>

@@ -1,0 +1,11 @@
+﻿global using Application.Dtos;
+global using Application.Dtos.Filters;
+global using Application.Interfaces;
+global using Application.Interfaces.Services;
+global using Infrastructure.Context;
+global using Infrastructure.Extensions;
+global using Infrastructure.Installers;
+global using Microsoft.AspNetCore.Mvc;
+global using Scalar.AspNetCore;
+global using System.Net;
+global using System.Text.Json.Serialization;
