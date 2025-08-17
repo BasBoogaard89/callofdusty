@@ -2,6 +2,7 @@
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public abstract class BaseController<TDto, TService>(TService service) : ControllerBase
     where TDto : BaseDto
     where TService : IBaseService<TDto>

@@ -4,6 +4,7 @@ import { Header } from '@presentation/layout/header/header';
 import { Menu } from '@presentation/layout/menu/menu';
 import { TitleService } from '@infrastructure/services/title.service';
 import { MATERIAL_IMPORTS } from '@infrastructure/material.imports';
+import { AuthAdapterService } from '@infrastructure/adapters/auth-adapter.service';
 
 @Component({
     selector: 'app-layout',
@@ -18,4 +19,5 @@ import { MATERIAL_IMPORTS } from '@infrastructure/material.imports';
 })
 export class Layout {
     readonly titleService = inject(TitleService);
+    authService = inject(AuthAdapterService);
 }

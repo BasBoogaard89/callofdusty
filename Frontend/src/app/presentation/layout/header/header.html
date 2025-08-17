@@ -4,7 +4,8 @@
     <span>Call of Dusty</span>
 
     <span class="spacer"></span>
-
+    
+    @if (authService.isAuthenticated()) {
     <div class="flex align-items-center">
         <p>Theme: </p>
         <mat-form-field appearance="outline" class="header-select">
@@ -17,5 +18,8 @@
             </mat-select>
         </mat-form-field>
     </div>
+
+    <button matButton (click)="logout()"><mat-icon>logout</mat-icon> Logout</button>
     
+    }
 </mat-toolbar>

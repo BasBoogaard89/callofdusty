@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseCrudService } from '@infrastructure/services/base-crud.service';
-import { RoomCategoryDto, RoomCategoryService, OpenAPI } from '@generated/api';
+import { RoomCategoryDto, RoomCategoryService } from '@generated/api';
 import { AxiosHttpRequest } from '@generated/api/core/AxiosHttpRequest';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RoomCategoryAdapterService extends BaseCrudService<RoomCategoryDto> {
-    api = new RoomCategoryService(new AxiosHttpRequest(OpenAPI));
+    api = new RoomCategoryService(new AxiosHttpRequest(this.apiConfig()));
     
     protected override get cacheKeys() {
         return ['room-category'] as const;

@@ -1,7 +1,8 @@
 ﻿namespace Infrastructure.Context;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
+    public DbSet<ApplicationUser> User { get; set; }
     public DbSet<Chore> Chore { get; set; }
     public DbSet<ChoreCategory> ChoreCategory { get; set; }
     public DbSet<History> History { get; set; }

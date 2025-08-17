@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseCrudService } from '@infrastructure/services/base-crud.service';
-import { OpenAPI, TextTemplateDto, TextTemplateService } from '@generated/api';
+import { TextTemplateDto, TextTemplateService } from '@generated/api';
 import { AxiosHttpRequest } from '@generated/api/core/AxiosHttpRequest';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TextTemplateAdapterService extends BaseCrudService<TextTemplateDto> {
-    api = new TextTemplateService(new AxiosHttpRequest(OpenAPI));
+    api = new TextTemplateService(new AxiosHttpRequest(this.apiConfig()));
     
     protected override get cacheKeys() {
         return ['text-template', 'chore-category', 'room-category', 'theme'] as const;

@@ -26,12 +26,7 @@ var app = builder.Build();
 // Seed example data
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-    dbContext.Database.EnsureDeleted();
-    dbContext.Database.Migrate();
-
-    ExampleDataSeeder.Seed(dbContext);
+    await ExampleDataSeeder.Seed(scope.ServiceProvider);
 }
 
 if (app.Environment.IsDevelopment())
@@ -44,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowAll");
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

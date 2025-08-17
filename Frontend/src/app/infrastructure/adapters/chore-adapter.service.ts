@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseCrudService } from '@infrastructure/services/base-crud.service';
-import { ChoreDto, ChoreFilterDto, ChoreQuestDto, ChoreService, OpenAPI } from '@generated/api';
+import { ChoreDto, ChoreFilterDto, ChoreQuestDto, ChoreService } from '@generated/api';
 import { AxiosHttpRequest } from '@generated/api/core/AxiosHttpRequest';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ChoreAdapterService extends BaseCrudService<ChoreDto> {
-    api = new ChoreService(new AxiosHttpRequest(OpenAPI));
+    api = new ChoreService(new AxiosHttpRequest(this.apiConfig()));
 
     protected override get cacheKeys() {
         return ['chore', 'chore-category', 'room'] as const;

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseCrudService } from '@infrastructure/services/base-crud.service';
-import { OpenAPI, ThemeDto, ThemeService } from '@generated/api';
+import { ThemeDto, ThemeService } from '@generated/api';
 import { AxiosHttpRequest } from '@generated/api/core/AxiosHttpRequest';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ThemeAdapterService extends BaseCrudService<ThemeDto> {
-    api = new ThemeService(new AxiosHttpRequest(OpenAPI));
+    api = new ThemeService(new AxiosHttpRequest(this.apiConfig()));
 
     protected override get cacheKeys() {
         return ['theme', 'history', 'chore'] as const;

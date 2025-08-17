@@ -5,6 +5,7 @@
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
 import { AxiosHttpRequest } from './core/AxiosHttpRequest';
+import { AuthService } from './services/AuthService';
 import { ChoreService } from './services/ChoreService';
 import { ChoreCategoryService } from './services/ChoreCategoryService';
 import { HistoryService } from './services/HistoryService';
@@ -15,6 +16,7 @@ import { TextTemplateService } from './services/TextTemplateService';
 import { ThemeService } from './services/ThemeService';
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 export class OpenAPIClient {
+    public readonly auth: AuthService;
     public readonly chore: ChoreService;
     public readonly choreCategory: ChoreCategoryService;
     public readonly history: HistoryService;
@@ -36,6 +38,7 @@ export class OpenAPIClient {
             HEADERS: config?.HEADERS,
             ENCODE_PATH: config?.ENCODE_PATH,
         });
+        this.auth = new AuthService(this.request);
         this.chore = new ChoreService(this.request);
         this.choreCategory = new ChoreCategoryService(this.request);
         this.history = new HistoryService(this.request);

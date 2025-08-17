@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseCrudService } from '@infrastructure/services/base-crud.service';
-import { HistoryDto, HistoryService, OpenAPI } from '@generated/api';
+import { HistoryDto, HistoryService } from '@generated/api';
 import { AxiosHttpRequest } from '@generated/api/core/AxiosHttpRequest';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HistoryAdapterService extends BaseCrudService<HistoryDto> {
-    api = new HistoryService(new AxiosHttpRequest(OpenAPI));
+    api = new HistoryService(new AxiosHttpRequest(this.apiConfig()));
     
     protected override get cacheKeys() {
         return ['history', 'chore'] as const;

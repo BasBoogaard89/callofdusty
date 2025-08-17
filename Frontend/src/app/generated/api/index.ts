@@ -19,6 +19,8 @@ export type { ChoreFilterDto } from './models/ChoreFilterDto';
 export type { ChoreQuestDto } from './models/ChoreQuestDto';
 export { DirtinessFactor } from './models/DirtinessFactor';
 export type { HistoryDto } from './models/HistoryDto';
+export type { LoginRequest } from './models/LoginRequest';
+export type { RegisterRequest } from './models/RegisterRequest';
 export type { RoomCategoryDto } from './models/RoomCategoryDto';
 export type { RoomCategoryDto2 } from './models/RoomCategoryDto2';
 export type { RoomDto } from './models/RoomDto';
@@ -29,6 +31,7 @@ export type { TextFragmentDto } from './models/TextFragmentDto';
 export type { TextTemplateDto } from './models/TextTemplateDto';
 export type { ThemeDto } from './models/ThemeDto';
 
+export { AuthService } from './services/AuthService';
 export { ChoreService } from './services/ChoreService';
 export { ChoreCategoryService } from './services/ChoreCategoryService';
 export { HistoryService } from './services/HistoryService';

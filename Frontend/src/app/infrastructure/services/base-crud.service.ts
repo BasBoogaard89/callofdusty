@@ -1,4 +1,5 @@
 import { inject } from "@angular/core";
+import { OpenAPI } from "@generated/api";
 import { CacheInvalidationService } from "@infrastructure/services/cache-invalidation.service";
 
 export abstract class BaseCrudService<T> {
@@ -10,11 +11,18 @@ export abstract class BaseCrudService<T> {
     protected cachedData?: Promise<T[]>;
     protected get cacheKeys(): readonly string[] { return []; } 
 
+    config = { ...OpenAPI };
+
     constructor() {
         const keys = this.cacheKeys;
         if (keys.length) {
             this.cacheService.on(keys as string[]).subscribe(() => this.invalidateCache());
         }
+    }
+
+    protected apiConfig(){
+        this.config.WITH_CREDENTIALS = true;
+        return this.config;
     }
 
     protected invalidateCache() {

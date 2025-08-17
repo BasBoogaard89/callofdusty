@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseCrudService } from '@infrastructure/services/base-crud.service';
-import { OpenAPI, TextFragmentDto, TextFragmentService } from '@generated/api';
+import { TextFragmentDto, TextFragmentService } from '@generated/api';
 import { AxiosHttpRequest } from '@generated/api/core/AxiosHttpRequest';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TextFragmentAdapterService extends BaseCrudService<TextFragmentDto> {
-    api = new TextFragmentService(new AxiosHttpRequest(OpenAPI));
+    api = new TextFragmentService(new AxiosHttpRequest(this.apiConfig()));
     
     protected override get cacheKeys() {
         return ['text-fragment', 'text-template'] as const;

@@ -1,44 +1,40 @@
-<form [formGroup]="form()" (ngSubmit)="submitted.emit({ value: form().value, valid: form().valid })" class="grid" [class.cols-4]="true">
+<form [formGroup]="form()" (ngSubmit)="submitted.emit({ value: form().value, valid: form().valid })">
     @for (f of schema().fields; track f) {
 
         @if (!f.showIf || f.showIf({ form: form(), data: data() })) {
-        <div class="col-span-{{f.ui?.colSpan || 2}}">
-            <mat-form-field class="w-full">
-                <mat-label>{{ f.label }}</mat-label>
+        <mat-form-field>
+            <mat-label>{{ f.label }}</mat-label>
 
-                @if (f.type==='text' || f.type==='number') {
-                <input matInput [type]="f.type==='number' ? 'number' : 'text'" [formControlName]="f.key" />
-                }
-
-                @if (f.type==='select') {
-                <mat-select [formControlName]="f.key">
-                    @for (option of resolveOptions(f); track option.value) {
-                    <mat-option [value]="option.value">
-                        {{option.label}}
-                    </mat-option>
-                    }
-                </mat-select>
-                }
-
-                @if (f.type==='textarea') {
-                <textarea matInput [formControlName]="f.key"></textarea>
-                }
-                
-                @if (f.ui?.hint) {
-                <mat-hint>{{ f.ui.hint }}</mat-hint>
-                }
-            </mat-form-field>
-            
-            @if (f.create) {
-                <button mat-icon-button matSuffix type="button" (click)="onCreateOption(f)" aria-label="Nieuw">
-                    <mat-icon>add</mat-icon>
-                </button>
+            @if (f.type==='text' || f.type==='number') {
+            <input matInput [type]="f.type==='number' ? 'number' : 'text'" [formControlName]="f.key" />
             }
-        </div>
+
+            @if (f.type==='select') {
+            <mat-select [formControlName]="f.key">
+                @for (option of resolveOptions(f); track option.value) {
+                <mat-option [value]="option.value">
+                    {{option.label}}
+                </mat-option>
+                }
+            </mat-select>
+            }
+
+            @if (f.type==='textarea') {
+            <textarea matInput [formControlName]="f.key"></textarea>
+            }
+            
+            @if (f.ui?.hint) {
+            <mat-hint>{{ f.ui.hint }}</mat-hint>
+            }
+        </mat-form-field>
+        
+        @if (f.create) {
+            <button mat-icon-button matSuffix type="button" (click)="onCreateOption(f)" aria-label="Add">
+                <mat-icon>add</mat-icon>
+            </button>
+        }
         }
     }
-
-    <div class="col-span-4 flex gap-2 justify-end mt-2">
-        <button mat-flat-button color="primary"><mat-icon>save</mat-icon> Save</button>
-    </div>
+    
+    <button mat-flat-button color="primary"><mat-icon>save</mat-icon> Save</button>
 </form>

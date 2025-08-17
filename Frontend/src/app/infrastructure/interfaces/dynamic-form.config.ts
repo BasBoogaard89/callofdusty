@@ -11,7 +11,6 @@ export type FormField<T = any> = {
     showIf?: (ctx: { form: FormGroup, data?: any }) => boolean;
     create?: () => Promise<Option | null>; 
     ui?: {
-        colSpan?: 1 | 2 | 3 | 4;
         hint?: string;
     };
 };

@@ -2,10 +2,14 @@
 global using Application.Dtos.Filters;
 global using Application.Interfaces;
 global using Application.Interfaces.Services;
+global using AutoMapper;
 global using Infrastructure.Context;
 global using Infrastructure.Extensions;
 global using Infrastructure.Installers;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Identity.Data;
 global using Microsoft.AspNetCore.Mvc;
 global using Scalar.AspNetCore;
 global using System.Net;
+global using System.Security.Claims;
 global using System.Text.Json.Serialization;
